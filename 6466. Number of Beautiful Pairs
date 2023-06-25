@@ -1,0 +1,23 @@
+class Solution(object):
+    def countBeautifulPairs(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        count=0
+         
+        for i in range(len(nums)-1):
+            for j in range(i+1,len(nums)):
+                a=nums[i]
+                b=nums[j]
+                first_digit=int(str(a)[0])
+                last_digit=int(str(b)[-1])
+                gcd = lambda a,b:a if b==0 else gcd(b,a%b)
+                if gcd(first_digit,last_digit)==1:
+                    count+=1 
+        return count
+nums=[2,5,1,4]
+#nums=[11,21,12]
+solution=Solution()
+c=solution.countBeautifulPairs(nums)
+print(c)
